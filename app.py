@@ -90,7 +90,7 @@ def samples(sample):
     sample_data = df.loc[df[sample] > 1, ["otu_id", "otu_label", sample]]
 
     # sort data from large to small (so later to pick the largest 10)
-   sample_data = sample_data.sort_values(by=sample, inplace=True, ascending=False)
+    sample_data = sample_data.sort_values(by=[sample], ascending=False)
 
     # Format the data to send as json
     data = {
