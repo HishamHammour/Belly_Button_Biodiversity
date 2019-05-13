@@ -88,6 +88,10 @@ def samples(sample):
     # Filter the data based on the sample number and
     # only keep rows with values above 1
     sample_data = df.loc[df[sample] > 1, ["otu_id", "otu_label", sample]]
+
+    # sort data from large to small (so later to pick the largest 10)
+   sample_data = sample_data.sort_values(by=sample, inplace=True, ascending=False)
+
     # Format the data to send as json
     data = {
         "otu_ids": sample_data.otu_id.values.tolist(),
